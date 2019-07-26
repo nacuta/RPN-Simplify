@@ -1,0 +1,29 @@
+import java.util.Stack;
+
+public class Simple {
+    public static void main(String[] args) {
+
+        Stack<Double> s = new Stack<>();
+        String input = "1 2 3 4 + + +";
+
+
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+
+            if (iiOperator(token)) {
+                double b = s.pop();
+                double a = s.pop();
+                s.push(a + b);
+
+            } else {
+                s.push(Double.valueOf(token));
+            }
+        }
+        System.out.println(s);
+    }
+
+    private static boolean iiOperator(String c) {
+        return c.equals("+")  || c.equals("-") ;
+    }
+
+}
